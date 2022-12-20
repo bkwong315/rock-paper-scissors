@@ -1,6 +1,29 @@
 const getComputerChoice = () => {
-  let choices = ["Rock", "Paper", "Scissors"];
+  const choices = ["rock", "paper", "scissors"];
   return choices[Math.floor(Math.random() * 3)];
+};
+
+const getUserChoice = () => {
+  const choices = ["rock", "paper", "scissors"];
+  let isValid = false;
+  let userInput = "";
+
+  while (!isValid) {
+    userInput = prompt('Select "Rock", "Paper", or "Scissors"!');
+    userInput = userInput.trim().toLowerCase();
+
+    for (let i = 0; i < choices.length; i++) {
+      if (userInput === choices[i]) {
+        isValid = true;
+      }
+    }
+
+    if (!isValid) {
+      alert("Invalid selection, please try again.");
+    }
+  }
+
+  return userInput;
 };
 
 const computeRound = (playerSelection, computerSelection) => {
@@ -51,4 +74,36 @@ const computeRound = (playerSelection, computerSelection) => {
   }
 
   return result;
+};
+
+const game = () => {
+  let playerScore = 0;
+  let computerScore = 0;
+  let playerSelection = "";
+  let computerSelection = "";
+  let result = "";
+
+  for (let i = 0; i < 5; i++) {
+    playerSelection = getUserChoice();
+    computerSelection = getComputerChoice();
+    result = computeRound(playerSelection, computerSelection);
+
+    if (result === "You Win!") {
+      playerScore++;
+    } else if (result === "You Lose!") {
+      computerScore++;
+    }
+
+    console.log(
+      `${result}\nPlayer Score: ${playerScore} | Computer Score: ${computerScore}`
+    );
+  }
+
+  if (playerScore > computerScore) {
+    console.log("Congratulations, you Win!");
+  } else if (playerScore === computerScore) {
+    console.log("That's a Draw!");
+  } else {
+    console.log("You Lose!");
+  }
 };
