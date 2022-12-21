@@ -33,6 +33,19 @@ body > h1 {
   padding: 8px;
 }
 
+.board > .scoreboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-weight: 900;
+}
+
+.scoreboard > div {
+  font-size: 24px;
+  text-align: center;
+}
+
 .board > .selection-display-container {
   display: flex;
   height: 100%;
