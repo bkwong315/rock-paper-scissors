@@ -3,107 +3,74 @@ const getComputerChoice = () => {
   return choices[Math.floor(Math.random() * 3)];
 };
 
-const getUserChoice = () => {
-  const choices = ["rock", "paper", "scissors"];
-  let isValid = false;
-  let userInput = "";
-
-  while (!isValid) {
-    userInput = prompt('Select "Rock", "Paper", or "Scissors"!');
-    userInput = userInput.trim().toLowerCase();
-
-    for (let i = 0; i < choices.length; i++) {
-      if (userInput === choices[i]) {
-        isValid = true;
-      }
-    }
-
-    if (!isValid) {
-      alert("Invalid selection, please try again.");
-    }
-  }
-
-  return userInput;
-};
-
 const computeRound = (playerSelection, computerSelection) => {
+  const playerScore = document.querySelector(".player-score");
+  const computerScore = document.querySelector(".computer-score");
+  const playerDisplay = document.querySelector(".player-selection");
+  const computerDisplay = document.querySelector(".computer-selection");
+  const resultDisplay = document.querySelector(".result");
+
   let playerSelectionLower = playerSelection.toLowerCase();
   let computerSelectionLower = computerSelection.toLowerCase();
-  let result = "";
+  let result = 0;
+
+  playerDisplay.textContent =
+    playerSelectionLower[0].toUpperCase() +
+    playerSelectionLower.slice(1, playerSelectionLower.length);
+
+  computerDisplay.textContent =
+    computerSelectionLower[0].toUpperCase() +
+    computerSelectionLower.slice(1, computerSelectionLower.length);
 
   switch (playerSelectionLower) {
     case "rock":
       switch (computerSelectionLower) {
         case "paper":
-          result = "You Lose!";
-          break;
-        case "rock":
-          result = "That's a Draw!";
+          result = -1;
           break;
         case "scissors":
-          result = "You Win!";
+          result = 1;
           break;
       }
       break;
     case "paper":
       switch (computerSelectionLower) {
         case "scissors":
-          result = "You Lose!";
-          break;
-        case "paper":
-          result = "That's a Draw!";
+          result = -1;
           break;
         case "rock":
-          result = "You Win!";
+          result = 1;
           break;
       }
       break;
     case "scissors":
       switch (computerSelectionLower) {
         case "rock":
-          result = "You Lose!";
-          break;
-        case "scissors":
-          result = "That's a Draw!";
+          result = -1;
           break;
         case "paper":
-          result = "You Win!";
+          result = 1;
           break;
       }
       break;
   }
 
-  return result;
+  if (result === 1) {
+    playerScore.textContent = parseInt(playerScore.textContent) + 1;
+    resultDisplay.textContent = "You Win!";
+  } else if (result === -1) {
+    computerScore.textContent = parseInt(computerScore.textContent) + 1;
+    resultDisplay.textContent = "You Lose!";
+  } else {
+    resultDisplay.textContent = "That's a Draw!";
+  }
 };
 
-const startGame = () => {
-  let playerScore = 0;
-  let computerScore = 0;
-  let playerSelection = "";
-  let computerSelection = "";
-  let result = "";
-
-  for (let i = 0; i < 5; i++) {
-    playerSelection = getUserChoice();
-    computerSelection = getComputerChoice();
-    result = computeRound(playerSelection, computerSelection);
-
-    if (result === "You Win!") {
-      playerScore++;
-    } else if (result === "You Lose!") {
-      computerScore++;
-    }
-
-    console.log(
-      `${result}\nPlayer Score: ${playerScore} | Computer Score: ${computerScore}`
-    );
-  }
-
-  if (playerScore > computerScore) {
-    console.log("Congratulations, you Win!");
-  } else if (playerScore === computerScore) {
-    console.log("That's a Draw!");
-  } else {
-    console.log("You Lose!");
-  }
+const gameStart = () => {
+  const btns = document.querySelectorAll(".btn");
+  btns.forEach((e) => {
+    e.addEventListener("click", (e) => {
+      computeRound(e.target.value, getComputerChoice());
+    });
+  });
 };

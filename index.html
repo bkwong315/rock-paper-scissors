@@ -15,7 +15,7 @@
     <script src="./script.js"></script>
     <title>Rock Paper Scissors</title>
   </head>
-  <body>
+  <body onload="gameStart()">
     <h1>Rock Paper Scissors</h1>
     <div class="board">
       <div class="scoreboard">
@@ -31,9 +31,9 @@
     <div class="controls">
       <div class="btn-header">Select One!</div>
       <div class="btns">
-        <button class="btn btn-rock">Rock</button>
-        <button class="btn btn-paper">Paper</button>
-        <button class="btn btn-scissors">Scissors</button>
+        <button class="btn btn-rock" value="rock">Rock</button>
+        <button class="btn btn-paper" value="paper">Paper</button>
+        <button class="btn btn-scissors" value="scissors">Scissors</button>
       </div>
     </div>
   </body>
