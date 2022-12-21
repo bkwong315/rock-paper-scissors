@@ -62,6 +62,11 @@ body > h1 {
   border-radius: 4px;
 }
 
+.controls > .btn-header {
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+}
+
 .btn {
   background-color: rgb(57, 79, 99);
   padding: 10px;
