@@ -76,7 +76,7 @@ const computeRound = (playerSelection, computerSelection) => {
   return result;
 };
 
-const game = () => {
+const startGame = () => {
   let playerScore = 0;
   let computerScore = 0;
   let playerSelection = "";
