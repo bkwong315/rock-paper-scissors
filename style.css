@@ -18,3 +18,34 @@ body > h1 {
   text-shadow: 0px 2px 8px rgb(255, 202, 87);
   color: rgb(255, 255, 255);
 }
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 40vh;
+  border: dashed 2px rgb(253, 215, 133);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.board > .selection-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 96px;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+  height: 100%;
+}
+
+.board > .player-selection {
+  border-right: dashed 1px rgb(253, 215, 133);
+}
+
+.board > .computer-selection {
+  border-left: dashed 1px rgb(253, 215, 133);
+}
