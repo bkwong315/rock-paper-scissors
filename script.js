@@ -9,6 +9,16 @@ const computeRound = (playerSelection, computerSelection) => {
   const playerDisplay = document.querySelector(".player-selection");
   const computerDisplay = document.querySelector(".computer-selection");
   const resultDisplay = document.querySelector(".result");
+  const gameStateDisplay = document.querySelector(".game-state");
+
+  if (playerScore.textContent >= 5 || computerScore.textContent >= 5) {
+    gameStateDisplay.textContent = "";
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+    playerDisplay.textContent = "...";
+    computerDisplay.textContent = "...";
+    resultDisplay.textContent = "Waiting on Player";
+  }
 
   let playerSelectionLower = playerSelection.toLowerCase();
   let computerSelectionLower = computerSelection.toLowerCase();
@@ -63,6 +73,12 @@ const computeRound = (playerSelection, computerSelection) => {
     resultDisplay.textContent = "You Lose!";
   } else {
     resultDisplay.textContent = "That's a Draw!";
+  }
+
+  if (playerScore.textContent >= 5) {
+    gameStateDisplay.textContent = "Victory!";
+  } else if (computerScore.textContent >= 5) {
+    gameStateDisplay.textContent = "Defeat!";
   }
 };
 
