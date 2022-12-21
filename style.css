@@ -61,3 +61,19 @@ body > h1 {
   border: solid 2px rgb(253, 215, 133);
   border-radius: 4px;
 }
+
+.btn {
+  background-color: rgb(57, 79, 99);
+  padding: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.15rem;
+  color: rgb(255, 255, 255);
+  border-bottom: inset 2px transparent;
+}
+
+.btn:hover {
+  background-color: rgb(87, 120, 150);
+  border-bottom: inset 2px white;
+}
